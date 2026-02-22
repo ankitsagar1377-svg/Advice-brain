@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advice Brain | Business Registration & Compliance</title>
+<style>
+:root{
+  --bg:#040911;
+  --bg-alt:#0f1b2c;
+  --card:#101b2c;
+  --accent:#ff8a3d;
+  --accent-alt:#1da1ff;
+  --text:#f4f7fb;
+  --muted:#9fb3ca;
+  --border:rgba(255,255,255,0.08);
+  --shadow:0 20px 50px rgba(4,9,17,0.55);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Poppins","Segoe UI",system-ui,-apple-system,sans-serif;
+  background:radial-gradient(circle at top,var(--accent-alt) 0%,var(--bg) 45%);
+  color:var(--text);
+  line-height:1.6;
+  min-height:100vh;
+}
+a{text-decoration:none;color:inherit}
+.page{
+  max-width:1200px;
+  margin:0 auto;
+  padding:clamp(20px,4vw,50px);
+  position:relative;
+}
+.site-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  position:sticky;
+  top:0;
+  background:rgba(4,9,17,0.8);
+  padding:15px 20px;
+  border-radius:18px;
+  border:1px solid var(--border);
+  backdrop-filter:blur(10px);
+  z-index:9;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.brand strong{font-size:1.15rem;display:block}
+.brand small{color:var(--muted);font-size:0.75rem}
+.logo{
+  width:58px;
+  height:58px;
+  border-radius:16px;
+  background:var(--bg);
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,0.1);
+  box-shadow:var(--shadow);
+}
+.site-nav{
+  display:flex;
+  gap:20px;
+  font-size:0.95rem;
+  color:var(--muted);
+}
+.site-nav a{padding:6px 10px;border-radius:999px;transition:background 0.3s,color 0.3s}
+.site-nav a:hover{background:rgba(255,255,255,0.08);color:#fff}
+.nav-toggle{
+  display:none;
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  padding:8px 12px;
+  font-size:1.1rem;
+}
+.hero{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:40px;
+  margin-top:40px;
+}
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:0.2em;
+  font-size:0.75rem;
+  color:var(--accent-alt);
+  margin-bottom:12px;
+}
+.hero h1{
+  font-size:clamp(2rem,4vw,3.2rem);
+  margin-bottom:15px;
+}
+.hero p{color:#d6deeb}
+.hero-list{
+  list-style:none;
+  margin:20px 0;
+  display:grid;
+  gap:10px;
+}
+.hero-list li{
+  background:rgba(15,27,44,0.8);
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid var(--border);
+}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
+.btn{
+  padding:12px 22px;
+  border-radius:14px;
+  border:1px solid transparent;
+  font-weight:600;
+  cursor:pointer;
+  transition:transform 0.2s,box-shadow 0.2s;
+  text-align:center;
+}
+.btn.primary{
+  background:linear-gradient(135deg,var(--accent),#ffb347);
+  color:#0b0f16;
+  box-shadow:0 12px 24px rgba(255,138,61,0.2);
+}
+.btn.ghost{
+  border:1px solid rgba(255,255,255,0.4);
+  color:#fff;
+}
+.btn:hover{transform:translateY(-2px)}
+.hero-media{
+  display:grid;
+  gap:20px;
+}
+.card{
+  background:var(--card);
+  border-radius:22px;
+  padding:24px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+.logo-card svg{width:120px;height:120px}
+.logo-card h3{margin:15px 0 5px}
+.logo-card span{color:var(--muted);font-size:0.9rem}
+.info-card{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.info-card .price{
+  font-size:2rem;
+  font-weight:700;
+  color:var(--accent);
+}
+.pillars{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  margin:50px 0 30px;
+}
+.pillar-card{
+  background:rgba(255,255,255,0.05);
+  border-radius:18px;
+  padding:20px;
+  border:1px solid var(--border);
+  font-weight:600;
+}
+.section-top{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:20px;
+  align-items:flex-end;
+  margin-bottom:20px;
+}
+.section-top h2{font-size:2rem}
+.search{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,0.05);
+  padding:10px 18px;
+  border-radius:14px;
+  border:1px solid var(--border);
+}
+.search input{
+  background:transparent;
+  border:none;
+  outline:none;
+  color:#fff;
+  min-width:220px;
+}
+.services{margin:40px 0}
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+.service-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  position:relative;
+  transition:transform 0.2s,border 0.2s;
+}
+.service-card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,0.25)}
+.service-emoji{font-size:1.8rem}
+.price-tag{font-weight:700;color:var(--accent)}
+.badge{
+  position:absolute;
+  top:16px;
+  right:16px;
+  background:rgba(255,255,255,0.1);
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:0.7rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+}
+.pricing{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+  margin:50px 0;
+}
+.pricing-card,.cta-panel{
+  border-radius:22px;
+  border:1px solid var(--border);
+  background:linear-gradient(145deg,rgba(17,27,44,0.9),rgba(7,12,20,0.9));
+  padding:30px;
+}
+.pricing-card ul{margin-top:20px;display:grid;gap:10px;padding-left:20px;color:#dce4f5}
+.cta-panel{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.process{
+  margin:40px 0;
+}
+.timeline{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  margin-top:20px;
+}
+.step{
+  border:1px dashed rgba(255,255,255,0.2);
+  border-radius:20px;
+  padding:18px;
+  background:rgba(255,255,255,0.02);
+}
+.step-number{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent-alt));
+  display:grid;
+  place-items:center;
+  font-weight:700;
+  margin-bottom:12px;
+}
+.values{
+  margin:40px 0;
+}
+.value-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  margin-top:20px;
+}
+.value-card{
+  border-radius:18px;
+  border:1px solid var(--border);
+  padding:18px;
+  background:rgba(255,255,255,0.04);
+}
+.contact{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+  margin:50px 0 30px;
+}
+.contact-card{
+  border-radius:22px;
+  border:1px solid var(--border);
+  background:rgba(15,27,44,0.95);
+  padding:24px;
+}
+.contact-card h3{margin-bottom:12px}
+.contact-details{
+  display:grid;
+  gap:12px;
+  color:#d0dbeb;
+}
+.contact-details span{display:flex;gap:10px;align-items:flex-start}
+.map-placeholder{
+  border:1px dashed rgba(255,255,255,0.2);
+  border-radius:18px;
+  padding:24px;
+  text-align:center;
+  color:var(--muted);
+}
+footer{
+  text-align:center;
+  color:var(--muted);
+  padding-top:20px;
+  border-top:1px solid var(--border);
+  font-size:0.85rem;
+}
+@media (max-width:768px){
+  .site-nav{
+    position:absolute;
+    top:75px;
+    right:20px;
+    background:rgba(4,9,17,0.95);
+    flex-direction:column;
+    padding:15px;
+    border-radius:16px;
+    border:1px solid var(--border);
+    display:none;
+  }
+  .site-nav.open{display:flex}
+  .nav-toggle{display:block}
+  .search input{min-width:0;width:100px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="site-header">
+    <a class="brand" href="#hero">
+      <span class="logo">
+        <svg viewBox="0 0 160 160" aria-hidden="true">
+          <defs>
+            <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1da1ff"/>
+              <stop offset="100%" stop-color="#ff8a3d"/>
+            </linearGradient>
+            <linearGradient id="brainLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffa95f"/>
+              <stop offset="100%" stop-color="#ff6a21"/>
+            </linearGradient>
+            <linearGradient id="brainRight" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#5ed3ff"/>
+              <stop offset="100%" stop-color="#1a7cff"/>
+            </linearGradient>
+          </defs>
+          <path d="M80 10 L140 35 L132 110 L80 150 L28 110 L20 35 Z" fill="url(#shieldGradient)" opacity="0.25" stroke="#ffffff" stroke-width="3"/>
+          <path d="M80 50 C80 30 55 30 50 52 V108 C50 132 80 132 80 118 Z" fill="url(#brainLeft)" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          <path d="M80 50 C80 30 105 30 110 52 V108 C110 132 80 132 80 118 Z" fill="url(#brainRight)" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          <rect x="50" y="70" width="60" height="20" rx="10" ry="10" fill="#0c1422" stroke="#fff" stroke-width="2"/>
+          <rect x="55" y="74" width="18" height="12" rx="4" fill="#62d0ff"/>
+          <rect x="87" y="74" width="18" height="12" rx="4" fill="#ffd18a"/>
+          <polygon points="80,120 70,140 90,140" fill="#0c1422" stroke="#fff" stroke-width="2"/>
+        </svg>
+      </span>
+      <div>
+        <strong>Advice Brain</strong>
+        <small>Business Registration Experts</small>
+      </div>
+    </a>
+    <nav class="site-nav">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+  </header>
+
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">Across India</p>
+      <h1>Professional registration & compliance, powered by Advice Brain</h1>
+      <p>Brain Advice Service delivers reliable business registration, licenses, and legal compliance with crystal-clear communication and zero hidden charges.</p>
+      <ul class="hero-list">
+        <li>🧾 GST Registration & Return Support</li>
+        <li>🥗 FSSAI License (Basic | State | Central)</li>
+        <li>🏢 Company Incorporation (Pvt Ltd, LLP, OPC, Section 8)</li>
+        <li>🚀 MSME/Udyam, Startup India, IEC, Trademark & ISO certification</li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn primary" href="mailto:advicebrain6@gmail.com">Email Advice Brain</a>
+        <a class="btn ghost" href="https://ani-tau.vercel.app/" target="_blank" rel="noopener">Visit Existing Portal</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="card logo-card">
+        <svg viewBox="0 0 200 200" aria-label="Advice Brain logo">
+          <defs>
+            <linearGradient id="shieldHero" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1da1ff"/>
+              <stop offset="100%" stop-color="#ff8a3d"/>
+            </linearGradient>
+          </defs>
+          <path d="M100 12 L175 42 L165 130 L100 188 L35 130 L25 42 Z" fill="url(#shieldHero)" opacity="0.18" stroke="#ffffff" stroke-width="4"/>
+          <path d="M100 55 C100 30 65 30 60 60 V125 C60 150 100 150 100 135 Z" fill="#ff974e" stroke="#fff" stroke-width="3" opacity="0.9"/>
+          <path d="M100 55 C100 30 135 30 140 60 V125 C140 150 100 150 100 135 Z" fill="#1fb6ff" stroke="#fff" stroke-width="3" opacity="0.9"/>
+          <rect x="60" y="80" width="80" height="26" rx="13" fill="#0b1320" stroke="#fff" stroke-width="3"/>
+          <rect x="66" y="85" width="24" height="16" rx="6" fill="#62d0ff"/>
+          <rect x="110" y="85" width="24" height="16" rx="6" fill="#ffd18a"/>
+          <polygon points="100,135 85,165 115,165" fill="#0b1320" stroke="#fff" stroke-width="3"/>
+        </svg>
+        <h3>Advice Brain</h3>
+        <span>Business Registration & Legal Compliance</span>
+        <p style="margin-top:8px;color:#c7d6ed;">Open now · 10:00 AM – 4:00 PM</p>
+      </div>
+      <div class="card info-card">
+        <p class="price">₹1,499 + GST</p>
+        <p>Transparent flat-fee model covering documentation review, filing, and handholding until approval.</p>
+        <p>Need multiple services? Bundle discounts available—just ask!</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pillars">
+    <div class="pillar-card">🛡️ Transparent process<br><small>No false promises, no hidden charges.</small></div>
+    <div class="pillar-card">🌐 Pan-India reach<br><small>Registrations & licenses across India.</small></div>
+    <div class="pillar-card">🤝 Long-term partners<br><small>Compliance support beyond approvals.</small></div>
+  </section>
+
+  <section id="services" class="services">
+    <div class="section-top">
+      <div>
+        <p class="eyebrow">What we handle</p>
+        <h2>Comprehensive compliance catalog</h2>
+      </div>
+      <label class="search">
+        <span>🔍</span>
+        <input id="serviceSearch" type="search" placeholder="Search e.g. GST, LLP">
+      </label>
+    </div>
+    <div class="service-grid" id="serviceGrid">
+      <article class="service-card" data-tags="gst registration returns e-commerce">
+        <span class="badge">Popular</span>
+        <div class="service-emoji">🧾</div>
+        <h3>GST Registration & Returns</h3>
+        <p>Registration for standard & e-commerce sellers plus monthly/quarterly filing support.</p>
+        <div class="price-tag">₹699 – ₹1,499</div>
+      </article>
+      <article class="service-card" data-tags="fssai food license basic state central">
+        <div class="service-emoji">🥗</div>
+        <h3>FSSAI License</h3>
+        <p>Basic, State, or Central Food Safety licensing so your food business opens confidently.</p>
+        <div class="price-tag">₹1,499</div>
+      </article>
+      <article class="service-card" data-tags="proprietorship business registration">
+        <div class="service-emoji">💼</div>
+        <h3>Proprietorship Firm</h3>
+        <p>Set up a sole proprietorship with proper registrations and tax-ready documentation.</p>
+        <div class="price-tag">₹1,499</div>
+      </article>
+      <article class="service-card" data-tags="partnership deed">
+        <div class="service-emoji">🤝</div>
+        <h3>Partnership Firm</h3>
+        <p>Create partnership deeds, PAN, and registrations for shared ventures.</p>
+        <div class="price-tag">₹1,499</div>
+      </article>
+      <article class="service-card" data-tags="llp limited liability partnership">
+        <div class="service-emoji">🧠</div>
+        <h3>Limited Liability Partnership (LLP)</h3>
+        <p>LLP incorporation, DSC/DPIN, and ROC filings managed end-to-end.</p>
+        <div class="price-tag">₹1,499</div>
+      </article>
+      <article class="service-card" data-tags="opc one person company">
+        <div class="service-emoji">👤</div>
+        <h3>One Person Company</h3>
+        <p>Incorporate an OPC to enjoy corporate status with single ownership flexibility.</p>
+        <div class="price-tag">₹1,499</div>
+      </article>
+      <article class="service-card" data-tags="private limited company registration">
+        <div class="service-emoji">🏢</div>
+        <h3>Private Limited Company</h3>
+        <p>Name approval, incorporation, and post-incorporation compliances under one roof.</p>
+        <div class="price-tag">₹1,499</div>
+      </article>
+      <article class="service-card" data-tags="section 8 ngo company">
+        <div class="service-emoji">🎗️</div>
+        <h3>Section 8 Company</h3>
+        <p>Specialized assistance for not-for-profit incorporations with CSR credibility.</p>
+        <div class="price-tag">₹1,499</div>
+      </article>
+      <article class="service-card" data-tags="msme udyam startup india">
+        <div class="service-emoji">🚀</div>
+        <h3>MSME / Udyam & Startup India</h3>
+        <p>Secure government recognition, incentives, and priority lending benefits.</p>
+        <div class="price-tag">₹1,499</div>
+      </article>
+      <article class="service-card" data-tags="iso certification">
+        <div class="service-emoji">📜</div>
+        <h3>ISO Certification</h3>
+        <p>ISO guidance and coordination so your brand signals trust quickly.</p>
+        <div class="price-tag">₹1,499</div>
+      </article>
+      <article class="service-card" data-tags="import export code iec">
+        <div class="service-emoji">🌍</div>
+        <h3>Import Export Code (IEC)</h3>
+        <p>Get ready for global trade with IEC registration and documentation prep.</p>
+        <div class="price-tag">₹1,499</div>
+      </article>
+      <article class="service-card" data-tags="trademark brand protection">
+        <div class="service-emoji">™️</div>
+        <h3>Trademark Registration</h3>
+        <p>Search, application, and monitoring to protect your brand identity.</p>
+        <div class="price-tag">₹1,499</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing">
+    <div class="pricing-card">
+      <p class="eyebrow">Flat fee model</p>
+      <h2>₹1,499 + GST per service</h2>
+      <p>Simple pricing inspired by our WhatsApp catalog—no surprises, just streamlined compliance.</p>
+      <ul>
+        <li>📋 Document checklist & templates</li>
+        <li>🧠 Dedicated compliance guide</li>
+        <li>⏱️ Prompt filings & follow-ups</li>
+        <li>📮 Approval handover + future reminders</li>
+      </ul>
+    </div>
+    <div class="cta-panel">
+      <div>
+        <h3>Need a compliance bundle?</h3>
+        <p>Combine registrations (e.g., GST + IEC + Trademark) and we'll tailor multi-service savings.</p>
+      </div>
+      <a class="btn primary" href="mailto:advicebrain6@gmail.com?subject=Advice%20Brain%20Bundle%20Request">Request a custom quote</a>
+    </div>
+  </section>
+
+  <section id="process" class="process">
+    <p class="eyebrow">Smooth delivery</p>
+    <h2>Our four-step partnership</h2>
+    <div class="timeline">
+      <div class="step">
+        <span class="step-number">1</span>
+        <h3>Discovery Call</h3>
+        <p>We map your entity type, compliance needs, and expected go-live date.</p>
+      </div>
+      <div class="step">
+        <span class="step-number">2</span>
+        <h3>Document Kit</h3>
+        <p>Receive a checklist, templates, and submission link. We review everything upfront.</p>
+      </div>
+      <div class="step">
+        <span class="step-number">3</span>
+        <h3>Filing & Tracking</h3>
+        <p>Applications filed with proactive updates, clarifications, and escalations.</p>
+      </div>
+      <div class="step">
+        <span class="step-number">4</span>
+        <h3>Approval & Care</h3>
+        <p>Digital approvals + compliance calendar so you stay future-ready.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="values">
+    <p class="eyebrow">Why founders like us</p>
+    <h2>Values that mirror our catalog promise</h2>
+    <div class="value-grid">
+      <div class="value-card">🤝 Honest guidance<br><small>No false promises, only clarity.</small></div>
+      <div class="value-card">📢 Transparent updates<br><small>Every milestone communicated in plain language.</small></div>
+      <div class="value-card">🧭 Long-term view<br><small>We stay for annual filings & renewals.</small></div>
+      <div class="value-card">⚡ Fast turnaround<br><small>Focused team and digital workflows.</small></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="contact-card">
+      <h3>Contact Advice Brain</h3>
+      <div class="contact-details">
+        <span>📍 A-563, Sector 29, Noida, Uttar Pradesh 201303, India</span>
+        <span>⏰ Mon – Sat · 10:00 AM to 4:00 PM</span>
+        <span>✉️ <a href="mailto:advicebrain6@gmail.com">advicebrain6@gmail.com</a></span>
+        <span>🌐 <a href="https://ani-tau.vercel.app/" target="_blank" rel="noopener">ani-tau.vercel.app</a></span>
+        <span>💬 Message us on WhatsApp catalog for quick replies.</span>
+      </div>
+      <div class="cta-row" style="margin-top:18px">
+        <a class="btn primary" href="mailto:advicebrain6@gmail.com?subject=Schedule%20a%20Consultation">Book a consultation</a>
+        <a class="btn ghost" href="#services">Browse services</a>
+      </div>
+    </div>
+    <div class="map-placeholder">
+      <p>🗺️ Serving clients across India from Noida HQ.</p>
+      <p style="margin-top:10px">We coordinate every registration digitally—no travel needed.</p>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Advice Brain · Brain Advice Service · Business compliance is our responsibility.
+  </footer>
+</div>
+
+<script>
+const navToggle=document.querySelector('.nav-toggle');
+const nav=document.querySelector('.site-nav');
+navToggle.addEventListener('click',()=>nav.classList.toggle('open'));
+
+const searchInput=document.getElementById('serviceSearch');
+const serviceCards=[...document.querySelectorAll('.service-card')];
+searchInput.addEventListener('input',e=>{
+  const term=e.target.value.toLowerCase();
+  serviceCards.forEach(card=>{
+    const text=card.textContent.toLowerCase()+card.dataset.tags;
+    card.style.display=text.includes(term)?'flex':'none';
+  });
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
